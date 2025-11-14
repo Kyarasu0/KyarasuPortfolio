@@ -5,6 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    host: true,
+    allowedHosts: [
+      'c516847dacd3.ngrok-free.app'
+    ],
     watch: {
       usePolling: true, // ファイル変更を強制監視
       interval: 100,    // 監視間隔(ms)
