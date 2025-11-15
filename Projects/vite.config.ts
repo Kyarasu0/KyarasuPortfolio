@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: [
-      'c516847dacd3.ngrok-free.app'
+      '91d0be9b9152.ngrok-free.app'
     ],
     watch: {
       usePolling: true, // ファイル変更を強制監視

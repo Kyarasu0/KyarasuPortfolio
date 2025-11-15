@@ -29,6 +29,11 @@
     /*大きさ設定*/
     height: 25%;
     width: 100%;
+
+    /*アニメーション設定*/
+    animation: popIn 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
 }
 
 .image{
@@ -87,4 +92,24 @@
 .title_h3{
     position: relative;
     top: -0.7rem;
+}
+
+/* ====== ポップアップアニメーション ====== */
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop {
+    display: inline-block;
+    animation: popIn 0.5s ease-out forwards;
 }
