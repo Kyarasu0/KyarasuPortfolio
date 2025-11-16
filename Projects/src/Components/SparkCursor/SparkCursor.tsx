@@ -3,6 +3,7 @@ import { useEffect } from "react";
 export default function SparkTrail() {
 
   useEffect(() => {
+    // sparkの作成
     const createSpark = (x: number, y: number) => {
       const spark = document.createElement("div");
       spark.className = "spark";
@@ -10,11 +11,13 @@ export default function SparkTrail() {
       spark.style.top = `${y}px`;
       document.body.appendChild(spark);
 
+      // アニメーション終了を感知するListenerを追加
       spark.addEventListener("animationend", () => {
         spark.remove();
       });
     };
 
+    // タッチを検知してその部分でspark作成関数を実行
     const handleTouchMove = (e: TouchEvent) => {
       e.preventDefault(); // スクロール防止
       for (let i = 0; i < e.touches.length; i++) {
@@ -25,6 +28,7 @@ export default function SparkTrail() {
 
     document.addEventListener("touchmove", handleTouchMove, { passive: false });
 
+    // 画面描画が終了したらListenerを削除する
     return () => {
       document.removeEventListener("touchmove", handleTouchMove);
     };
