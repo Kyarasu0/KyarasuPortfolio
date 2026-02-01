@@ -1,10 +1,11 @@
-import { Shield, Code, Terminal, Cpu } from "lucide-react";
+import { Shield, Code, Terminal, Cpu, Activity, Palette, Wind } from "lucide-react";
 
 export const SKILLS = [
-  { name: "React / Next.js", level: 50, icon: <Code size={16} /> },
-  { name: "TypeScript", level: 30, icon: <Code size={16} /> },
-  { name: "Python", level: 60, icon: <Terminal size={16} /> },
-  { name: "Network Security", level: 60, icon: <Shield size={16} /> },
-  { name: "FlipperZero Dev", level: 60, icon: <Cpu size={16} /> },
-  { name: "Cyber Security", level: 65, icon: <Shield size={16} /> }, // 追加例：項目が増えてもスクロールで対応
+  { name: "KyarasuProfile (React)", level: 50, icon: <Code size={16} /> },
+  { name: "OS Development", level: 5, icon: <Cpu size={16} /> },
+  { name: "CryptoHack (Python)", level: Math.floor(25 / 308 * 100), icon: <Terminal size={16} /> },
+  { name: "PortSwigger (Web Security)", level: 0, icon: <Shield size={16} /> },
+  { name: "Cognitive Bias", level: 50, icon: <Activity size={16} /> },
+  { name: "Color Certification", level: 50, icon: <Palette size={16} /> },
+  { name: "OpenFOAM", level: 5, icon: <Wind size={16} /> }
 ];

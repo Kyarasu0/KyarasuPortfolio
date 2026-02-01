@@ -34,11 +34,11 @@ export default function ProfileCard() {
           </p>
 
           {/* Typing Console をここに挿入 */}
-          <TypingConsole text={`> Initializing User: ${PROFILE.nickname}...\n> Status: ${PROFILE.role}\n> Target: World Class\n> Ready...`} />
+          <TypingConsole text={`> Initializing User: ${PROFILE.nickname}...\n> Welcome to my portfolio! \n> First flag is here: Kyarasu{We1c0me_t0_my_p40fi13!}`} />
           
           <div className="space-y-1.5 text-xs sm:text-sm text-slate-500 font-medium">
             <p className="flex items-center justify-center sm:justify-start gap-2">
-              <School size={16} className="text-slate-400" /> {PROFILE.university}
+              <School size={16} className="text-slate-400" /> {PROFILE.university} {PROFILE.gradYear}
             </p>
             <p className="flex items-center justify-center sm:justify-start gap-2">
               <MapPin size={16} className="text-slate-400" /> {PROFILE.course}

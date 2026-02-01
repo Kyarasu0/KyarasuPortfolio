@@ -27,7 +27,7 @@ export default function Timeline() {
         <button className="relative pl-6 w-full text-left group/add">
             <div className="absolute left-[5px] top-1.5 w-2 h-2 rounded-full bg-slate-200 group-hover/add:bg-blue-300 transition-colors" />
             <span className="text-xs text-slate-400 hover:text-blue-500 transition-colors flex items-center gap-1">
-              + Add History
+             Coming soon...
             </span>
         </button>
       </div>

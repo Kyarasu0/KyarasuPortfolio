@@ -12,6 +12,7 @@ import SkillsCards from "./Components/SkillsCard";
 import Timeline from "./Components/TimelineCard";
 import ShareCard from "./Components/ShareCard";
 import AwardsCard from "./Components/AwardsCard";
+import BookmarkButton from "./Components/BookmarkButton";
 
 export default function App() {
   const [bookmarked, setBookmarked] = useState(false);
@@ -42,20 +43,10 @@ export default function App() {
         {/* Header */}
         <header className="flex justify-between items-center mb-8 animate-fade-in-up">
           <div className="flex items-center gap-2 px-4 py-2 bg-white/50 rounded-full border border-white/60 shadow-sm backdrop-blur-md">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-400 animate-pulse" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
             <span className="font-mono text-xs font-bold text-slate-500">SYSTEM: ONLINE</span>
           </div>
-          <button 
-            onClick={handleBookmark}
-            className={`
-              flex items-center gap-2 px-5 py-2.5 rounded-full 
-              transition-all duration-300 border border-white/60 backdrop-blur-md
-              ${bookmarked ? 'bg-blue-500 text-white shadow-lg scale-105' : 'bg-white/50 text-slate-600 hover:bg-white hover:shadow-md'}
-            `}
-          >
-            <Bookmark size={18} className={bookmarked ? "fill-current" : ""} />
-            <span className="text-xs font-bold tracking-wide">{bookmarked ? "SAVED" : "BOOKMARK"}</span>
-          </button>
+          <BookmarkButton />
         </header>
 
         {/* Bento Grid Layout - Reorganized for vertical stability */}
@@ -65,7 +56,7 @@ export default function App() {
           {/* Profile Card (Large) */}
           <ProfileCard />
           {/* Photo Frame 1 (Decoration) */}
-          <PhotoFrame imageIndex={1} className="hidden md:block col-span-1 h-[280px] rotate-2 hover:rotate-0 transition-transform" />
+          <PhotoFrame imageIndex={1} className="hidden md:block col-span-1 h-[300px] rotate-2 hover:rotate-0 transition-transform" />
           {/* SNS Links */}
           <SNS_LinksCard />
 

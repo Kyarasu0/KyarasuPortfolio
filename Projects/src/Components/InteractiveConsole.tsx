@@ -10,11 +10,11 @@ export const InteractiveConsole = () => {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToBottom = () => {
+  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
-  useEffect(scrollToBottom, [logs]);
+  // useEffect(scrollToBottom, [logs]);
 
   const handleCommand = (e: FormEvent) => {
     e.preventDefault();

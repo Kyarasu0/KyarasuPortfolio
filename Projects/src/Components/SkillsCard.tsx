@@ -5,7 +5,7 @@ import { SKILLS } from "../data/skills";
 export default function SkillsCards() {
   return (
     <BentoCard className="col-span-1 md:col-span-2 lg:col-span-3 min-h-[220px]" title="Tech Stack & Proficiency" delay={400}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 max-h-[200px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent" style={{ maxHeight: 'calc(100% - 48px)' }}>
         {SKILLS.map((skill) => (
           <div key={skill.name} className="group/skill">
             <div className="flex justify-between items-center mb-1.5">

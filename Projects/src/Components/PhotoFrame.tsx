@@ -6,10 +6,13 @@ export const PhotoFrame = ({ imageIndex, className = "" }: { imageIndex: number,
       <img 
         src={GALLERY_IMAGES[imageIndex % GALLERY_IMAGES.length]} 
         alt="Gallery"
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        onError={(e) => {
-           (e.target as HTMLImageElement).src = `https://placehold.co/400x400/e2e8f0/94a3b8?text=Photo`;
-        }}
+        className="
+          w-full h-full
+          object-contain
+          scale-90
+          transition-transform duration-700
+          group-hover:scale-100
+        "
       />
       {/* Tape Effect */}
       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-3 bg-white/30 backdrop-blur-sm border border-white/40 rotate-1 shadow-sm opacity-80" />

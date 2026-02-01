@@ -9,5 +9,5 @@ export const PROFILE = {
   gradYear: "28卒",
   hobby: "FlipperZero",
   comment: "甘い物大好き",
-  location: "Japan, Shiga/Kyoto"
+  location: "Japan, Osaka"
 };

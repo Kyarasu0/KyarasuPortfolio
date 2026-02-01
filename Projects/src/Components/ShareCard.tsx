@@ -6,7 +6,7 @@ import { PROFILE } from "../data/profile";
 export default function ShareCard() {
 
     const handleShare = () => {
-        const text = `Check out ${PROFILE.nickname}'s Portfolio!`;
+        const text = `#${PROFILE.nickname}\nみんなも ${PROFILE.nickname} のポートフォリオを見てみよう！`;
         const url = window.location.href;
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
     };
