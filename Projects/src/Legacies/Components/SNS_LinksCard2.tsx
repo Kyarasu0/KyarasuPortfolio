@@ -1,5 +1,5 @@
-import { SNS_LINKS } from "../data/sns_links";
-import { BentoCard } from "./BentoCard";
+import { SNS_LINKS } from "../../data/sns_links";
+import { BentoCard } from "../../Components/BentoCard";
 import { ExternalLink } from "lucide-react";
 
 {/* SNS Links Card */}
