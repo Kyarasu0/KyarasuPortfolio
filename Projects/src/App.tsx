@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { Bookmark } from "lucide-react";
 import { PROFILE } from "./data/profile";
 import { PhotoFrame } from "./Components/PhotoFrame";
 import { InteractiveConsole } from "./Components/InteractiveConsole";
@@ -12,16 +10,10 @@ import SkillsCards from "./Components/SkillsCard";
 import Timeline from "./Components/TimelineCard";
 import ShareCard from "./Components/ShareCard";
 import AwardsCard from "./Components/AwardsCard";
-import BookmarkButton from "./Components/BookmarkButton";
+import { KudosButton } from "./Components/Like";
+import { FlagForm } from "./Components/FlagSubmission";
 
 export default function App() {
-  const [bookmarked, setBookmarked] = useState(false);
-
-  const handleBookmark = () => {
-    setBookmarked(true);
-    setTimeout(() => setBookmarked(false), 2000);
-  };
-
   return (
     <div className="min-h-screen bg-[#F2F4F8] text-slate-800 font-sans selection:bg-blue-100 selection:text-blue-900 pb-20">
       
@@ -46,7 +38,7 @@ export default function App() {
             <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
             <span className="font-mono text-xs font-bold text-slate-500">SYSTEM: ONLINE</span>
           </div>
-          <BookmarkButton />
+          <KudosButton />
         </header>
 
         {/* Bento Grid Layout - Reorganized for vertical stability */}
@@ -84,6 +76,10 @@ export default function App() {
           <AwardsCard />
           {/* Share */}
           <ShareCard />
+          {/* CTF Challenge Section (Flag Input) */}
+          <div className="md:col-span-3 lg:col-span-4 animate-fade-in-up" style={{ animationDelay: '900ms' }}>
+             <FlagForm />
+          </div>
 
         </div>
 

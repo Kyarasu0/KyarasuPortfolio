@@ -1,5 +1,27 @@
-import { useState, useEffect, useRef, FormEvent } from 'react';
-import { PROFILE } from '../data/profile';
+import React, { useState, useRef, useEffect, FormEvent } from "react";
+import { SKILLS } from "../data/skills";
+
+// 2. Interactive Console (Fully Functional Mock)
+// ファイルシステムの定義
+type FileSystem = {
+  [key: string]: string | FileSystem;
+};
+
+const FILE_SYSTEM: FileSystem = {
+  "home": {
+    "kyarasu": {
+      "profile.txt": "Name: Kyarasu\nRole: Student Engineer\nLike: Sweets",
+      "skills.json": JSON.stringify(SKILLS.map(s => s.name), null, 2),
+      "secret": {
+        "flag_hint.txt": "Try to find the flag in the Mana Button..."
+      },
+      "images": {
+        "me.png": "[Binary Data]",
+        "logo.svg": "[SVG Data]"
+      }
+    }
+  }
+};
 
 export const InteractiveConsole = () => {
   const [logs, setLogs] = useState<string[]>([
@@ -8,30 +30,98 @@ export const InteractiveConsole = () => {
     "Type 'help' for commands."
   ]);
   const [input, setInput] = useState("");
+  // Current Working Directory (path stack)
+  const [cwd, setCwd] = useState<string[]>(["home", "kyarasu"]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // const scrollToBottom = () => {
-  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToBottom, [logs]);
 
-  // useEffect(scrollToBottom, [logs]);
+  // ファイルシステム走査ヘルパー
+  const resolvePath = (path: string[]): any => {
+    let current: any = FILE_SYSTEM;
+    for (const p of path) {
+      if (current && typeof current === 'object' && p in current) {
+        current = current[p];
+      } else {
+        return null;
+      }
+    }
+    return current;
+  };
 
   const handleCommand = (e: FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
-
-    const cmd = input.trim().toLowerCase();
-    const newLogs = [...logs, `> ${input}`];
+    const rawCmd = input.trim();
+    const args = rawCmd.split(" ");
+    const cmd = args[0].toLowerCase();
+    
+    const newLogs = [...logs, `${cwd.join("/")} $ ${rawCmd}`];
 
     switch (cmd) {
       case "help":
-        newLogs.push("Available commands: help, whoami, ls, clear, date, flag");
+        newLogs.push("Available commands: help, whoami, ls, cd, cat, pwd, clear, date");
         break;
       case "whoami":
-        newLogs.push(`User: ${PROFILE.nickname} [Admin]`);
+        newLogs.push(`uid=1000(kyarasu) gid=1000(kyarasu) groups=1000(kyarasu),27(sudo)`);
+        break;
+      case "pwd":
+        newLogs.push("/" + cwd.join("/"));
         break;
       case "ls":
-        newLogs.push("profile.txt  skills.json  secret_flag.txt  images/");
+        const currentDir = resolvePath(cwd);
+        if (typeof currentDir === 'object') {
+          // ディレクトリとファイルを色分け
+          const items = Object.keys(currentDir).map(key => {
+            const isDir = typeof currentDir[key] === 'object';
+            return isDir ? `${key}/` : key;
+          });
+          newLogs.push(items.join("  "));
+        } else {
+          newLogs.push("Error: Not a directory");
+        }
+        break;
+      case "cd":
+        if (!args[1]) {
+          // 引数なしはホームへ
+          setCwd(["home", "kyarasu"]);
+        } else if (args[1] === "..") {
+          // 親ディレクトリへ
+          if (cwd.length > 0) {
+            setCwd(prev => prev.slice(0, -1));
+          }
+        } else if (args[1] === "/") {
+            setCwd([]);
+        } else {
+          // 指定ディレクトリへ
+          const targetName = args[1].replace("/", ""); // 簡易的な処理
+          const targetDir = resolvePath([...cwd, targetName]);
+          if (targetDir && typeof targetDir === 'object') {
+            setCwd(prev => [...prev, targetName]);
+          } else {
+            newLogs.push(`cd: no such file or directory: ${args[1]}`);
+          }
+        }
+        break;
+      case "cat":
+        if (!args[1]) {
+          newLogs.push("Usage: cat <filename>");
+        } else {
+          const targetFile = resolvePath([...cwd, args[1]]);
+          if (typeof targetFile === 'string') {
+            newLogs.push(targetFile);
+            if (args[1] === "flag_hint.txt") {
+                newLogs.push("Another flag might be: FLAG{C0NS0LE_M4STER}");
+            }
+          } else if (typeof targetFile === 'object') {
+             newLogs.push(`cat: ${args[1]}: Is a directory`);
+          } else {
+            newLogs.push(`cat: ${args[1]}: No such file or directory`);
+          }
+        }
         break;
       case "clear":
         setLogs([]);
@@ -40,14 +130,9 @@ export const InteractiveConsole = () => {
       case "date":
         newLogs.push(new Date().toString());
         break;
-      case "flag":
-      case "cat secret_flag.txt":
-        newLogs.push("FLAG{Y0U_F0UND_1T_H4CK3R!}"); // Easter Egg
-        break;
       default:
-        newLogs.push(`Command not found: ${cmd}`);
+        newLogs.push(`command not found: ${cmd}`);
     }
-
     setLogs(newLogs);
     setInput("");
   };
@@ -56,20 +141,21 @@ export const InteractiveConsole = () => {
     <div className="flex flex-col h-full font-mono text-xs sm:text-sm bg-[#1e1e1e] text-slate-300 rounded-2xl p-4 shadow-inner overflow-hidden border border-slate-700/50">
       <div className="flex-1 overflow-y-auto space-y-1 min-h-[140px] max-h-[200px] scrollbar-hide">
         {logs.map((log, i) => (
-          <div key={i} className={log.startsWith(">") ? "text-blue-400 font-bold" : "text-slate-300"}>
+          <div key={i} className={log.includes("$") ? "text-green-400 font-bold mt-2" : "text-slate-300 whitespace-pre-wrap pl-2"}>
             {log}
           </div>
         ))}
         <div ref={messagesEndRef} />
       </div>
       <form onSubmit={handleCommand} className="mt-2 flex items-center gap-2 border-t border-slate-700 pt-2">
+        <span className="text-blue-400 font-bold">{cwd[cwd.length-1] || "/"}</span>
         <span className="text-green-400 animate-pulse">➜</span>
         <input 
           type="text" 
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="bg-transparent border-none outline-none text-slate-100 w-full placeholder-slate-600 focus:ring-0 p-0"
-          placeholder="Type command..."
+          placeholder="ls, cd, cat..."
           autoComplete="off"
         />
       </form>
