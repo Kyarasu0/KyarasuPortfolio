@@ -13,7 +13,7 @@ const FILE_SYSTEM: FileSystem = {
       "profile.txt": "Name: Kyarasu\nRole: Student Engineer\nLike: Sweets",
       "skills.json": JSON.stringify(SKILLS.map(s => s.name), null, 2),
       "secret": {
-        "flag_hint.txt": "Try to find the flag in the Mana Button..."
+        "flag_hint.txt": "Try to find the flag in the LOVE Button..."
       },
       "images": {
         "me.png": "[Binary Data]",
@@ -34,10 +34,10 @@ export const InteractiveConsole = () => {
   const [cwd, setCwd] = useState<string[]>(["home", "kyarasu"]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  useEffect(scrollToBottom, [logs]);
+  // const scrollToBottom = () => {
+  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
+  // useEffect(scrollToBottom, [logs]);
 
   // ファイルシステム走査ヘルパー
   const resolvePath = (path: string[]): any => {
@@ -51,6 +51,8 @@ export const InteractiveConsole = () => {
     }
     return current;
   };
+
+  const logContainerRef = useRef<HTMLDivElement>(null);
 
   const handleCommand = (e: FormEvent) => {
     e.preventDefault();
@@ -114,7 +116,7 @@ export const InteractiveConsole = () => {
           if (typeof targetFile === 'string') {
             newLogs.push(targetFile);
             if (args[1] === "flag_hint.txt") {
-                newLogs.push("Another flag might be: FLAG{C0NS0LE_M4STER}");
+                newLogs.push("Another flag might be: Kyarasu{C0NS0LE_M4STER}");
             }
           } else if (typeof targetFile === 'object') {
              newLogs.push(`cat: ${args[1]}: Is a directory`);
@@ -135,11 +137,36 @@ export const InteractiveConsole = () => {
     }
     setLogs(newLogs);
     setInput("");
+
+    requestAnimationFrame(() => {
+      const el = logContainerRef.current;
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
+    });
+
   };
 
   return (
-    <div className="flex flex-col h-full font-mono text-xs sm:text-sm bg-[#1e1e1e] text-slate-300 rounded-2xl p-4 shadow-inner overflow-hidden border border-slate-700/50">
-      <div className="flex-1 overflow-y-auto space-y-1 min-h-[140px] max-h-[200px] scrollbar-hide">
+    <div
+      className="
+        group
+        flex flex-col h-full font-mono text-xs sm:text-sm
+        bg-[#1e1e1e] text-slate-300
+        rounded-2xl p-4
+        shadow-[0_4px_12px_rgba(0,0,0,0.15)]
+        overflow-hidden border border-slate-700/50
+
+        transition-all duration-500 ease-out
+        hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+        hover:-translate-y-1
+      "
+    >
+
+      <div
+        ref={logContainerRef}
+        className="flex-1 overflow-y-auto space-y-1 min-h-[140px] max-h-[200px] scrollbar-hide"
+      >
         {logs.map((log, i) => (
           <div key={i} className={log.includes("$") ? "text-green-400 font-bold mt-2" : "text-slate-300 whitespace-pre-wrap pl-2"}>
             {log}

@@ -9,6 +9,7 @@ export const HISTORY = [
   { year: "2025/5", title: "TsukuCTFへの参加", desc: "Writeup賞を受賞" },
   { year: "2025/8", title: "RsHackの勉強会で登壇", desc: "IDORについての発表" },
   { year: "2025/8", title: "ICTSC(トラブルシューティングコンテスト)への参加", desc: "一次予選のみ通過" },
+  { year: "2025/9", title: "UAI XRハッカソンへの参加", desc: "Sonic Flavorを制作" },
   { year: "2025/9", title: "58ハッカソンへの参加", desc: "Idisclosure#2を制作" },
   { year: "2025/10", title: "ウメキタTechBaseへの参加", desc: "Memory Steg-Hideoutを制作" },
   { year: "2025/10", title: "JPHackへの参加", desc: "ARROWを制作" },
