@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { PROFILE } from '../data/profile';
+import { PROFILE } from '../../data/profile';
 
 export const InteractiveConsole = () => {
   const [logs, setLogs] = useState<string[]>([

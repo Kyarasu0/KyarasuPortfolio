@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Heart } from "lucide-react";
 
 export const KudosButton = () => {
@@ -40,7 +40,7 @@ export const KudosButton = () => {
         `}
       >
         {unlocked
-          ? 'FLAG: Kyarasu{100_LOVE_POWER}'
+          ? 'FLAG: Kyarasu{LOVE_POWER}'
           : `LOVE: ${mana}`}
       </span>
     </button>

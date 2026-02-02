@@ -36,7 +36,7 @@ export default function App() {
         <header className="flex justify-between items-center mb-8 animate-fade-in-up">
           <div className="flex items-center gap-2 px-4 py-2 bg-white/50 rounded-full border border-white/60 shadow-sm backdrop-blur-md">
             <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="font-mono text-xs font-bold text-slate-500">SYSTEM: ONLINE</span>
+            <span className="font-mono text-xs font-bold text-slate-500">ONLINE</span>
           </div>
           <KudosButton />
         </header>

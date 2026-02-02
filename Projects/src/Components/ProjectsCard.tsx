@@ -19,7 +19,7 @@ export default function ProjectsCard() {
           My Projects
         </h3>
 
-        {/* Tab Switcher */}
+        {/* Tab Switcher
         <div className="flex bg-slate-100 rounded-lg p-1">
           <button
             onClick={() => setActiveTab("projects")}
@@ -41,7 +41,7 @@ export default function ProjectsCard() {
           >
             Gallery
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Content */}
@@ -139,28 +139,38 @@ export default function ProjectsCard() {
             {GALLERY_IMAGES.map((src, i) => (
               <div
                 key={i}
-                className="aspect-square rounded-xl bg-slate-200 overflow-hidden relative group/img cursor-pointer"
+                className="
+                  aspect-square
+                  rounded-xl
+                  bg-slate-200
+                  overflow-hidden
+                  relative
+                  group/img
+                "
               >
                 <img
                   src={src}
                   alt="Gallery"
                   className="
                     w-full h-full object-cover
-                    grayscale
-                    transition-all duration-500
-                    group-hover/img:grayscale-0
-                    group-hover/img:scale-110
+                    transition-transform duration-500
+                    group-hover/img:scale-[1.03]
                   "
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =
                       `https://placehold.co/400x400/e2e8f0/94a3b8?text=Image+${i + 1}`;
                   }}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors" />
-                <Maximize2
-                  size={16}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover/img:opacity-100 transition-opacity drop-shadow-md"
-                />
+
+                {/* subtle overlay (no link feeling)
+                <div
+                  className="
+                    absolute inset-0
+                    bg-black/0
+                    group-hover/img:bg-black/5
+                    transition-colors
+                  "
+                /> */}
               </div>
             ))}
           </div>
