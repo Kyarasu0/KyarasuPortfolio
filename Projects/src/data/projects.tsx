@@ -57,12 +57,12 @@ export const PROJECTS = [
   {
     id: 6,
     name: "ARROW",
-    summary: "イベント告知 & 出席管理アプリ (React, Express.js)",
+    summary: "イベント告知 & 出席管理アプリ",
     color: "bg-orange-500",
     members: ["Kyarasu", "Maomao", "Toaru", "Misoni", "Minto", "Nayu", "COG", "Yukke"],
     memberCount: 8,
     startDate: "2025-10",
-    role: "Blender / Figma / Backend(Express.js) / DB Design / Docker",
+    role: "Blender / Backend(Express.js) / DB Design / Docker",
     icon: "images/Projects/ARROW.jpg"
   }
 ];
