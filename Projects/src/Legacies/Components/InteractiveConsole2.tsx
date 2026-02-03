@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, FormEvent } from 'react';
+import { useState, useRef } from 'react';
+import type { FormEvent } from "react";
 import { PROFILE } from '../../data/profile';
 
 export const InteractiveConsole = () => {

@@ -1,5 +1,6 @@
-import { useState, useEffect, FormEvent } from "react";
-import { Flag, CheckCircle, AlertCircle, Trophy } from "lucide-react";
+import { useState, useEffect } from "react";
+import type { FormEvent } from "react";
+import { Flag, Trophy } from "lucide-react";
 import Confetti from "react-confetti";
 import { VALID_FLAGS } from "../data/valid_flags";
 

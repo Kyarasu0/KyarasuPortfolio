@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Maximize2 } from "lucide-react";
+// import { useState } from "react";
 import { BentoCard } from "./BentoCard";
 import { PROJECTS } from "../data/projects";
-import { GALLERY_IMAGES } from "../data/gallery_images";
+// import { GALLERY_IMAGES } from "../data/gallery_images";
 
 export default function ProjectsCard() {
-  const [activeTab, setActiveTab] = useState<"projects" | "gallery">("projects");
+  // const [activeTab, setActiveTab] = useState<"projects" | "gallery">("projects");
 
   return (
     <BentoCard
@@ -46,8 +45,7 @@ export default function ProjectsCard() {
 
       {/* Content */}
       <div className="p-6 bg-slate-50/50">
-        {activeTab === "projects" ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {PROJECTS.map((project) => (
               <div
                 key={project.id}
@@ -132,50 +130,49 @@ export default function ProjectsCard() {
                 </div>
               </div>
             ))}
-          </div>
-        ) : (
-          /* Gallery */
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {GALLERY_IMAGES.map((src, i) => (
-              <div
-                key={i}
-                className="
-                  aspect-square
-                  rounded-xl
-                  bg-slate-200
-                  overflow-hidden
-                  relative
-                  group/img
-                "
-              >
-                <img
-                  src={src}
-                  alt="Gallery"
-                  className="
-                    w-full h-full object-cover
-                    transition-transform duration-500
-                    group-hover/img:scale-[1.03]
-                  "
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      `https://placehold.co/400x400/e2e8f0/94a3b8?text=Image+${i + 1}`;
-                  }}
-                />
-
-                {/* subtle overlay (no link feeling)
-                <div
-                  className="
-                    absolute inset-0
-                    bg-black/0
-                    group-hover/img:bg-black/5
-                    transition-colors
-                  "
-                /> */}
-              </div>
-            ))}
-          </div>
-        )}
+        </div>
       </div>
     </BentoCard>
   );
 }
+
+// /* Gallery */
+// <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+//   {GALLERY_IMAGES.map((src, i) => (
+//     <div
+//       key={i}
+//       className="
+//         aspect-square
+//         rounded-xl
+//         bg-slate-200
+//         overflow-hidden
+//         relative
+//         group/img
+//       "
+//     >
+//       <img
+//         src={src}
+//         alt="Gallery"
+//         className="
+//           w-full h-full object-cover
+//           transition-transform duration-500
+//           group-hover/img:scale-[1.03]
+//         "
+//         onError={(e) => {
+//           (e.target as HTMLImageElement).src =
+//             `https://placehold.co/400x400/e2e8f0/94a3b8?text=Image+${i + 1}`;
+//         }}
+//       />
+
+//       {/* subtle overlay (no link feeling)
+//       <div
+//         className="
+//           absolute inset-0
+//           bg-black/0
+//           group-hover/img:bg-black/5
+//           transition-colors
+//         "
+//       /> */}
+//     </div>
+//   ))}
+// </div>

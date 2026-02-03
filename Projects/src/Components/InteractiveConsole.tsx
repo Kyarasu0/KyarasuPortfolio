@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect, FormEvent } from "react";
+import { useState, useRef } from "react";
+import type { FormEvent } from "react";
 import { SKILLS } from "../data/skills";
 
 // 2. Interactive Console (Fully Functional Mock)

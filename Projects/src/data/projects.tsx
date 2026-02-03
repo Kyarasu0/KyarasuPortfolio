@@ -8,7 +8,7 @@ export const PROJECTS = [
     memberCount: 2,
     startDate: "2024-10",
     role: "Frontend(React Native) / Encryption Logic",
-    icon: "/images/Projects/VCESS_Croped.png"
+    icon: "images/Projects/VCESS_Croped.png"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const PROJECTS = [
     memberCount: 5,
     startDate: "2025-02",
     role: "Design / Frontend(Unity) / Game Logic / Backend(C#)",
-    icon: "/images/Projects/IdisclosureLogo.png"
+    icon: "images/Projects/IdisclosureLogo.png"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const PROJECTS = [
     memberCount: 5,
     startDate: "2025-09",
     role: "Blender",
-    icon: "/images/Projects/SonicFlavor.png"
+    icon: "images/Projects/SonicFlavor.png"
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ export const PROJECTS = [
     memberCount: 4,
     startDate: "2025-10",
     role: "Design / Frontend(Unity) / Game Logic / Backend(C#)",
-    icon: "/images/Projects/Idisclosure2Logo.png"
+    icon: "images/Projects/Idisclosure2Logo.png"
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const PROJECTS = [
     memberCount: 3,
     startDate: "2025-10",
     role: "Blender / Frontend(HTML, CSS, JS) / Backend(Express.js) / C++ / Docker",
-    icon: "/images/Projects/MemorySteg-Hideout.png"
+    icon: "images/Projects/MemorySteg-Hideout.png"
   },
   {
     id: 6,
@@ -63,6 +63,6 @@ export const PROJECTS = [
     memberCount: 8,
     startDate: "2025-10",
     role: "Blender / Figma / Backend(Express.js) / DB Design / Docker",
-    icon: "/images/Projects/ARROW.jpg"
+    icon: "images/Projects/ARROW.jpg"
   }
 ];
