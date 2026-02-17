@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 interface TypingConsoleProps {
-  text: string;       // 打ち込む文字列
-  speed?: number;     // 1文字の表示スピード(ms)
+  text: string;
+  speed?: number;
 }
 
 export const TypingConsole = ({ text, speed = 50 }: TypingConsoleProps) => {
@@ -19,9 +19,27 @@ export const TypingConsole = ({ text, speed = 50 }: TypingConsoleProps) => {
   }, [text, speed]);
 
   return (
-    <div className="font-mono text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line min-h-[80px]">
-      {displayText}
-      <span className="animate-pulse inline-block w-2 h-4 bg-slate-400 ml-1 align-middle"></span>
+    <div className="
+      relative 
+      flex justify-center sm:justify-start
+      font-mono text-xs sm:text-sm 
+      text-slate-600 
+      leading-relaxed 
+      whitespace-pre-line
+      mb-3 sm:mb-3
+    ">
+
+      {/* 幅確保用（見えない全文） */}
+      <div className="invisible whitespace-pre-line text-center sm:text-left">
+        {text}
+      </div>
+
+      {/* 実際に表示する文字 */}
+      <div className="absolute top-0 text-center sm:text-left">
+        {displayText}
+        <span className="animate-pulse inline-block w-2 h-4 bg-slate-400 ml-1 align-middle"></span>
+      </div>
+
     </div>
   );
 };
