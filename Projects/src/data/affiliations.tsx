@@ -2,7 +2,7 @@ export const AFFILIATIONS = [
   {
     name: "RiST",
     icon: "images/Affiliations/RiST.jpg",
-    role: "Vice Leader",
+    role: "Vice Leader (FY2025)",
     desc: "Ritsumeikan Security Team",
     color: "#ffffff",
   },

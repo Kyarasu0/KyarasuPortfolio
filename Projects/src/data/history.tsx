@@ -15,4 +15,6 @@ export const HISTORY = [
   { year: "2025/10", title: "JPHack 参加", desc: "ARROW を制作" },
   { year: "2025/12", title: "Nemtus ハッカソン 2026 参加", desc: "Idisclosure#3 ほか複数の成果物を制作予定" },
   { year: "2026/2", title: "KC3ハッカソン 2026 参加", desc: "ハッカソンで初めてブロックチェーンを実装した TrusToken を制作" },
+  { year: "2026/3", title: "EasterEggHackathon 運営", desc: "仕様書に従った表機能と遊び心のある裏機能を実装するハッカソンの運営を担当" },
+  { year: "2026/5", title: "技育博 参加", desc: "Idisclosure#1~3を展示" },
 ];
